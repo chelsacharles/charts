@@ -11,7 +11,7 @@ class Charts3 extends StatefulWidget {
 }
 
 class _ChartsState extends State<Charts3> {
-  var url = 'http://192.168.0.106:8081/tracker/register/TotalExpenseTotalIncomeLine_month?userId=41';
+  var url = 'http://192.168.0.106:8081/tracker/register/TotalExpenseTotalIncomeLine_year?userId=41';
 List customData;
   @override
   void initState() {

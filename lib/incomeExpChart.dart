@@ -28,37 +28,12 @@ class HorizontalBarChart1 extends StatelessWidget {
       seriesList,
       animate: animate,
       vertical: false,
-
-      barGroupingType: charts.BarGroupingType.grouped,
-      defaultRenderer: charts.BarRendererConfig(
-        groupingType: charts.BarGroupingType.grouped,
-        strokeWidthPx: 0.5,
-      ),
-      domainAxis: new charts.OrdinalAxisSpec(
-          renderSpec: new charts.SmallTickRendererSpec(
-
-              // Tick and Label styling here.
-              labelStyle: new charts.TextStyleSpec(
-                  fontSize: 0, // size in Pts.
-                  color: charts.MaterialPalette.white,
-                  ),
-
-              // Change the line colors to match text color.
-              lineStyle: new charts.LineStyleSpec(
-                  color: charts.MaterialPalette.white))),
+  barRendererDecorator: new charts.BarLabelDecorator<String>( labelPosition: charts.BarLabelPosition.auto),
+     domainAxis:
+          new charts.OrdinalAxisSpec(renderSpec: new charts.NoneRenderSpec()),
 
       /// Assign a custom style for the measure axis.
-      primaryMeasureAxis: new charts.NumericAxisSpec(
-          renderSpec: new charts.GridlineRendererSpec(
-
-              // Tick and Label styling here.
-              labelStyle: new charts.TextStyleSpec(
-                  fontSize: 0, // size in Pts.
-                  color: charts.MaterialPalette.white),
-
-              // Change the line colors to match text color.
-              lineStyle: new charts.LineStyleSpec(
-                  color: charts.MaterialPalette.white))),
+      primaryMeasureAxis: new charts.NumericAxisSpec(renderSpec: new charts.NoneRenderSpec()),
     );
   }
 
@@ -76,6 +51,8 @@ class HorizontalBarChart1 extends StatelessWidget {
         id: 'Sales',
         domainFn: (OrdinalSales sales, _) => sales.year,
         measureFn: (OrdinalSales sales, _) => sales.sales,
+        labelAccessorFn: (OrdinalSales sales, _) =>
+              '${sales.sales}',
         data: data,
           fillColorFn: (OrdinalSales sales, _) {
           return (sales.year== 'Income')?charts.MaterialPalette.blue.shadeDefault:charts.MaterialPalette.pink.shadeDefault;

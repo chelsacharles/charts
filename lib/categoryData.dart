@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutteranimatedchartsapp/categoryChart.dart';
+import 'package:flutteranimatedchartsapp/url.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
@@ -11,7 +12,7 @@ class Charts extends StatefulWidget {
 }
 
 class _ChartsState extends State<Charts> {
-  var url = 'http://192.168.0.106:8081/tracker/register/monthlycategorysum?userId=41';
+  var url = Api.url1;
 List customData;
   @override
   void initState() {
