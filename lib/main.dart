@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutteranimatedchartsapp/categoryData.dart';
+
 import 'package:flutteranimatedchartsapp/chart.dart';
+import 'package:flutteranimatedchartsapp/incomeExpData.dart';
+import 'package:flutteranimatedchartsapp/lineData.dart';
 import 'homepage.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +20,33 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Color(0xffff6101),
       ),
-      home: ChartsDemo(),
+      home: Scaffold(
+      appBar: AppBar(
+        title: Text('Heyy'),
+      ),
+      body:  Container (child: Padding(
+       padding: EdgeInsets.all(7),
+       child: Stack(children: <Widget>[
+         Align(
+           alignment: Alignment.centerRight,
+           child: Stack(
+             children: <Widget>[
+               Padding(
+               padding: EdgeInsets.fromLTRB(20, 20, 20, 350),
+               child:  Charts1(),),
+              Padding(
+               padding: EdgeInsets.fromLTRB(20, 200, 20, 180),
+               child:  Charts3(),),
+               Padding(
+               padding: EdgeInsets.fromLTRB(20, 350, 20, 20),
+               child:  Charts(),),
+               ]))])))
+      // Container(
+      //   padding: EdgeInsets.fromLTRB(20, 20, 20, 350),
+      //   child: barChart(),
+        
+      // ),
+    ),
     );
   }
 }
